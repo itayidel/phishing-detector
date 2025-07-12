@@ -1,0 +1,96 @@
+2025-07-12 11:34:45,254 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 11:34:45,302 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.102.13:5000
+2025-07-12 11:34:45,302 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-12 11:34:45,342 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 11:34:46,457 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 11:34:46,480 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 11:34:46,485 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 11:47:49,526 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\Blocks\\basic_detector.py', reloading
+2025-07-12 11:47:50,593 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 11:47:51,017 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 11:47:51,031 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 11:47:51,035 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 11:48:12,067 - __main__ - INFO - Health check requested
+2025-07-12 11:48:12,070 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 11:48:12] "GET /api/health HTTP/1.1" 200 -
+2025-07-12 11:49:35,195 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\flask_api_demo.py', reloading
+2025-07-12 11:49:35,200 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\flask_api_demo.py', reloading
+2025-07-12 11:49:36,414 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 11:49:37,640 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 11:49:37,676 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 11:49:37,682 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:09:58,090 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\anaconda\\Scripts\\conda-script.py', reloading
+2025-07-12 12:09:58,197 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:09:58,771 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:09:58,797 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:09:58,800 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:11:21,037 - __main__ - INFO - Health check requested
+2025-07-12 12:11:21,037 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:21] "GET /api/health HTTP/1.1" 200 -
+2025-07-12 12:11:24,086 - __main__ - INFO - Version information requested
+2025-07-12 12:11:24,086 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:24] "GET /api/version HTTP/1.1" 200 -
+2025-07-12 12:11:27,134 - __main__ - INFO - Email scan requested
+2025-07-12 12:11:27,134 - __main__ - INFO - Scan options - Basic: True, Patterns: True, Detailed: True
+2025-07-12 12:11:27,134 - __main__ - INFO - Parsing email content...
+2025-07-12 12:11:27,138 - __main__ - INFO - Email parsed - Sender: security@paypal-verification.com, Subject: URGENT: Account suspended - verify now!...
+2025-07-12 12:11:27,138 - __main__ - INFO - Running basic detection...
+2025-07-12 12:11:27,138 - __main__ - INFO - Basic detection complete - Risk: 100, Classification: Phishing
+2025-07-12 12:11:27,138 - __main__ - INFO - Running pattern detection...
+2025-07-12 12:11:27,143 - __main__ - INFO - Pattern detection complete - Risk: 100, Classification: Phishing
+2025-07-12 12:11:27,143 - __main__ - INFO - Scan completed successfully - Final risk: 100, Classification: Phishing
+2025-07-12 12:11:27,148 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:27] "POST /api/scan HTTP/1.1" 200 -
+2025-07-12 12:11:30,171 - __main__ - INFO - Email scan requested
+2025-07-12 12:11:30,171 - __main__ - INFO - Scan options - Basic: True, Patterns: True, Detailed: True
+2025-07-12 12:11:30,171 - __main__ - INFO - Parsing email content...
+2025-07-12 12:11:30,173 - __main__ - INFO - Email parsed - Sender: notifications@github.com, Subject: New repository starred...
+2025-07-12 12:11:30,173 - __main__ - INFO - Running basic detection...
+2025-07-12 12:11:30,173 - __main__ - INFO - Basic detection complete - Risk: 0, Classification: Safe
+2025-07-12 12:11:30,175 - __main__ - INFO - Running pattern detection...
+2025-07-12 12:11:30,175 - __main__ - INFO - Pattern detection complete - Risk: 10, Classification: Safe
+2025-07-12 12:11:30,177 - __main__ - INFO - Scan completed successfully - Final risk: 5, Classification: Safe
+2025-07-12 12:11:30,181 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:30] "POST /api/scan HTTP/1.1" 200 -
+2025-07-12 12:11:31,505 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\Blocks\\email_parser.py', reloading
+2025-07-12 12:11:32,573 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:11:32,922 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:11:32,938 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:11:32,953 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:11:33,244 - __main__ - INFO - Batch scan requested
+2025-07-12 12:11:33,244 - __main__ - INFO - Batch scan completed - 3 emails processed
+2025-07-12 12:11:33,259 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:33] "POST /api/scan/batch HTTP/1.1" 200 -
+2025-07-12 12:11:36,305 - __main__ - INFO - Email scan requested
+2025-07-12 12:11:36,306 - __main__ - ERROR - Missing email_content in request
+2025-07-12 12:11:36,306 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:36] "[31m[1mPOST /api/scan HTTP/1.1[0m" 400 -
+2025-07-12 12:11:38,322 - __main__ - INFO - Email scan requested
+2025-07-12 12:11:38,322 - __main__ - ERROR - Invalid email_content provided
+2025-07-12 12:11:38,322 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:38] "[31m[1mPOST /api/scan HTTP/1.1[0m" 400 -
+2025-07-12 12:11:40,357 - __main__ - INFO - Email scan requested
+2025-07-12 12:11:40,358 - __main__ - ERROR - Invalid email_content provided
+2025-07-12 12:11:40,359 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 12:11:40] "[31m[1mPOST /api/scan HTTP/1.1[0m" 400 -
+2025-07-12 12:12:01,125 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\flask_api_demo.py', reloading
+2025-07-12 12:12:01,126 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\block tests\\flask_api_demo.py', reloading
+2025-07-12 12:12:01,126 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\block tests\\flask_api_demo.py', reloading
+2025-07-12 12:12:02,258 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:12:03,116 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:12:03,157 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:12:03,162 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:21:23,353 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\test_api.py', reloading
+2025-07-12 12:21:24,483 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:21:24,913 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:21:24,930 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:21:24,933 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:26:17,506 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\Blocks\\nlp_detector.py', reloading
+2025-07-12 12:26:17,511 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\Blocks\\nlp_detector.py', reloading
+2025-07-12 12:26:19,097 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:26:19,797 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:26:19,817 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:26:19,819 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:26:50,163 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\test_nlp_detector.py', reloading
+2025-07-12 12:26:50,167 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\test_nlp_detector.py', reloading
+2025-07-12 12:26:51,300 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-12 12:26:52,215 - __main__ - INFO - Starting Phishing Detection API server...
+2025-07-12 12:26:52,236 - werkzeug - WARNING -  * Debugger is active!
+2025-07-12 12:26:52,242 - werkzeug - INFO -  * Debugger PIN: 344-966-430
+2025-07-12 12:27:04,022 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\app.py', reloading
+2025-07-12 12:27:04,091 - werkzeug - INFO -  * Detected change in 'C:\\Users\\DELL\\upwind_task\\app.py', reloading
+2025-07-12 12:27:05,207 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
