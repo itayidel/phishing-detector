@@ -18,6 +18,7 @@ from Blocks.email_parser import parse_email  # Block 1: Parses raw email into st
 from Blocks.basic_detector import detect_phishing  # Block 2: Basic rule-based detection
 from Blocks.pattern_detector import detect_patterns  # Block 3: Advanced pattern matching
 from Blocks.nlp_detector import detect_nlp_patterns  # Block 5: NLP-based detection
+from Blocks.ai_detector import detect_ai_urls  # Block 6: AI-powered URL detection
 from models import EmailData, DetectionResult  # Our data structures
 
 # CREATE THE FLASK APPLICATION
@@ -92,7 +93,8 @@ def get_version():
             'EmailParser',         # Block 1: Email parsing
             'BasicDetector',       # Block 2: Basic rule-based detection
             'PatternDetector',     # Block 3: Advanced pattern matching
-            'NLPDetector'          # Block 5: NLP-based detection
+            'NLPDetector',         # Block 5: NLP-based detection
+            'AIDetector'           # Block 6: AI-powered URL detection
         ]
     }), 200  # HTTP 200 = OK/Success
 
@@ -110,6 +112,7 @@ def scan_email():
             "include_basic": true,     # Whether to run basic detection (optional)
             "include_patterns": true,  # Whether to run pattern detection (optional)
             "include_nlp": true,       # Whether to run NLP detection (optional)
+            "include_ai": true,        # Whether to run AI URL detection (optional)
             "detailed_reasons": true   # Whether to include detailed explanations (optional)
         }
     }
@@ -161,10 +164,11 @@ def scan_email():
         include_basic = options.get('include_basic', True)      # Default: run basic detection
         include_patterns = options.get('include_patterns', True) # Default: run pattern detection
         include_nlp = options.get('include_nlp', True)          # Default: run NLP detection
+        include_ai = options.get('include_ai', True)            # Default: run AI URL detection
         detailed_reasons = options.get('detailed_reasons', True) # Default: include detailed explanations
         
         # Log what options were requested
-        logger.info(f"Scan options - Basic: {include_basic}, Patterns: {include_patterns}, NLP: {include_nlp}, Detailed: {detailed_reasons}")
+        logger.info(f"Scan options - Basic: {include_basic}, Patterns: {include_patterns}, NLP: {include_nlp}, AI: {include_ai}, Detailed: {detailed_reasons}")
         
         # STEP 3: PARSE THE EMAIL
         # Use Block 1 (EmailParser) to convert raw email into structured data
@@ -250,6 +254,26 @@ def scan_email():
                 logger.error(f"NLP detection failed: {str(e)}")
                 # We don't return an error here because other modules might still work
         
+        # STEP 6.6: RUN AI URL DETECTION (if requested)
+        ai_url_results = {}
+        if include_ai and email_data.links:
+            logger.info("Running AI URL detection...")
+            try:
+                # Call Block 6 (AI Detector) to analyze URLs
+                ai_url_results = detect_ai_urls(email_data.links)
+                
+                # Count how many URLs were classified as phishing
+                phishing_urls = [url for url, result in ai_url_results.items() 
+                               if result["prediction"] == 1]
+                
+                # Log the AI detection results
+                logger.info(f"AI URL detection complete - {len(phishing_urls)} phishing URLs found out of {len(email_data.links)} total URLs")
+                
+            except Exception as e:
+                # If AI detection fails, log the error but continue
+                logger.error(f"AI URL detection failed: {str(e)}")
+                ai_url_results = {}
+        
         # STEP 7: CHECK IF WE HAVE ANY RESULTS
         if not all_results:
             # If no detection modules worked, return an error
@@ -291,6 +315,9 @@ def scan_email():
                 'links_count': len(email_data.links), # Number of links found
                 'has_headers': bool(email_data.headers), # Whether we found email headers
             },
+            
+            # AI URL ANALYSIS (if available)
+            'ai_url_analysis': ai_url_results if include_ai else None,
             
             # DETECTION MODULES RESULTS
             'module_results': []  # Results from each detection module
@@ -360,6 +387,7 @@ def scan_batch():
             "include_basic": true,
             "include_patterns": true,
             "include_nlp": true,
+            "include_ai": true,
             "detailed_reasons": false
         }
     }
@@ -438,6 +466,15 @@ def scan_batch():
                     except Exception as e:
                         logger.error(f"NLP detection failed for email {email_id}: {str(e)}")
                 
+                # AI URL detection for batch processing
+                ai_url_results = {}
+                if options.get('include_ai', True) and email_data.links:
+                    try:
+                        ai_url_results = detect_ai_urls(email_data.links)
+                        logger.info(f"AI URL detection completed for email {email_id}")
+                    except Exception as e:
+                        logger.error(f"AI URL detection failed for email {email_id}: {str(e)}")
+                
                 if all_results:
                     # Calculate combined results
                     combined_risk = sum(r.risk_score for r in all_results) // len(all_results)
@@ -451,7 +488,8 @@ def scan_batch():
                         'classification': highest_risk_result.classification,
                         'confidence': max(r.confidence for r in all_results),
                         'sender': email_data.sender,
-                        'subject': email_data.subject
+                        'subject': email_data.subject,
+                        'ai_url_analysis': ai_url_results if options.get('include_ai', True) else None
                     }
                     
                     # Add detailed reasons if requested
@@ -503,7 +541,7 @@ def not_found(error):
         'available_endpoints': [
             'GET /api/health',
             'GET /api/version', 
-            'POST /api/scan (includes NLP analysis)',
+            'POST /api/scan (includes NLP and AI URL analysis)',
             'POST /api/scan/batch'
         ]
     }), 404
