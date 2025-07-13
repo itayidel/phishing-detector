@@ -22,7 +22,7 @@ class AIURLDetector:
     to classify URLs as phishing (1) or benign (0).
     """
     
-    def __init__(self, model_path: str = "models/url_phishing_xgb_tiny.pkl"):
+    def __init__(self, model_path: str = "url_phishing_xgb_tiny.pkl"):
         """
         Initialize the AI URL detector.
         
